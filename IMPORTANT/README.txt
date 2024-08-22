@@ -1,0 +1,1 @@
+Replace the folder "turtlebot3_gazebo" inside ros2_ws/install/turtlebot3_gazebo/share/turtlebot3_gazebo with the folder provided
