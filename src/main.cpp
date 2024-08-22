@@ -25,7 +25,7 @@ private:
         if (latest_laserscan_ != nullptr) {
             auto message = std::make_shared<sensor_msgs::msg::LaserScan>();
 
-            message->header.stamp = this->now();
+            message->header.stamp = latest_laserscan_->header.stamp;
 
             int pointcount = (latest_laserscan_->angle_max - latest_laserscan_->angle_min) / latest_laserscan_->angle_increment;
             for(int i = 0; i <= pointcount; i++){

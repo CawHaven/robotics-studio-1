@@ -2218,6 +2218,18 @@
 			"value" : "/opt/ros/humble/bin/ament_cppcheck"
 		},
 		{
+			"name" : "ament_flake8_BIN",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a program."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "/opt/ros/humble/bin/ament_flake8"
+		},
+		{
 			"name" : "ament_index_cpp_DIR",
 			"properties" : 
 			[
@@ -2264,6 +2276,18 @@
 			],
 			"type" : "PATH",
 			"value" : "/opt/ros/humble/share/ament_lint_common/cmake"
+		},
+		{
+			"name" : "ament_pep257_BIN",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a program."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "/opt/ros/humble/bin/ament_pep257"
 		},
 		{
 			"name" : "ament_uncrustify_BIN",
