@@ -34,6 +34,8 @@ private:
                 }
             }
 
+            std::cout << "<" << std::endl;
+
             laserpub_->publish(*message);
         }
     }
