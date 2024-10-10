@@ -5,32 +5,59 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
-# find dependencies
+# Find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
-# uncomment the following section in order to fill in
-# further dependencies manually.
-# find_package(<dependency> REQUIRED)
+find_package(nav_msgs REQUIRED)
+find_package(OpenCV REQUIRED)
+find_package(visualization_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(tf2_ros REQUIRED)
+find_package(tf2_geometry_msgs REQUIRED)
+find_package(gazebo_msgs REQUIRED)
+find_package(tf2 REQUIRED)
 
-add_executable(main src/main.cpp)
-ament_target_dependencies(main rclcpp std_msgs sensor_msgs)
- 
+# Include directories
+include_directories(
+  include
+  ${OpenCV_INCLUDE_DIRS}
+)
+
+# Executables
+add_executable(sprint1 src/sprint1.cpp)
+ament_target_dependencies(sprint1 rclcpp std_msgs sensor_msgs nav_msgs)
+target_link_libraries(sprint1 ${OpenCV_LIBS})
+
+add_executable(sprint2 src/sprint2.cpp)
+ament_target_dependencies(sprint2 rclcpp std_msgs sensor_msgs nav_msgs)
+target_link_libraries(sprint2 ${OpenCV_LIBS})
+
+add_executable(sprint3 src/sprint3.cpp)
+ament_target_dependencies(sprint3 rclcpp std_msgs sensor_msgs nav_msgs visualization_msgs gazebo_msgs tf2 tf2_ros tf2_geometry_msgs)
+target_link_libraries(sprint3 ${OpenCV_LIBS})
+
+
+add_executable(sprint3part2 src/sprint3part2.cpp)
+ament_target_dependencies(sprint3part2 rclcpp std_msgs sensor_msgs nav_msgs visualization_msgs gazebo_msgs tf2 tf2_ros tf2_geometry_msgs)
+target_link_libraries(sprint3part2 ${OpenCV_LIBS} yaml-cpp)
+
+# Testing
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
-  # the following line skips the linter which checks for copyrights
-  # comment the line when a copyright and license is added to all source files
+  # Skip linter checks for copyrights (if needed)
   set(ament_cmake_copyright_FOUND TRUE)
-  # the following line skips cpplint (only works in a git repo)
-  # comment the line when this package is in a git repo and when
-  # a copyright and license is added to all source files
   set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
 endif()
 
-install (TARGETS
-  main
+# Install targets
+install(TARGETS
+  sprint1
+  sprint2
+  sprint3
+  sprint3part2
   DESTINATION lib/${PROJECT_NAME}
 )
 
