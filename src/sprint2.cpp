@@ -17,8 +17,6 @@ public:
             "/scan", 10, std::bind(&System::laserCallback, this, std::placeholders::_1));
         odom_sub_ = this->create_subscription<nav_msgs::msg::Odometry>(
             "/odom", 10, std::bind(&System::odomCallback, this, std::placeholders::_1));
-        // world_map_sub_ = this->create_subscription<nav_msgs::msg::OccupancyGrid>(
-        //     "/map_server", 10, std::bind(&System::worldmapCallback, this, std::placeholders::_1));
 
         rotation_pub_ = this->create_publisher<nav_msgs::msg::Odometry>("/rotation", 10);
 
